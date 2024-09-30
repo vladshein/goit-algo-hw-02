@@ -6,6 +6,7 @@ def is_palindrome(input_string: str):
         print("Empty string")
         return False
     
+    print(f"Input string is {input_string}")
     d = deque()
     #remove all spaces
     stripped_string = input_string.strip()
@@ -18,25 +19,25 @@ def is_palindrome(input_string: str):
         if d.pop() == d.popleft():
             print("Elements are equal")
         else:
-            print("Else case")
+            print("Elements are not equal, return false")
             return False
     
     return True
 
-def check_result(result: bool):
+def check_result(result: bool, test_string):
     if result:
-        print("Input string is a palindrome")
+        print(f"Test string {test_string} is a palindrome\n")
     else:
-        print("Input string is not a palindrome")
+        print(f"Test string {test_string} is not a palindrome\n")
 
 test_string = "aabaa"
 result = is_palindrome(test_string)
-check_result(result)
+check_result(result, test_string)
 
 test_string = "aaaa"
 result = is_palindrome(test_string)
-check_result(result)
+check_result(result, test_string)
 
 test_string = "a  aebbaa"
 result = is_palindrome(test_string)
-check_result(result)
+check_result(result, test_string)

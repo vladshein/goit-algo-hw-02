@@ -40,7 +40,7 @@ while(True):
     generate_request(queue)
     print(queue)
     process_requests(queue)
-    value = input("Do you want to stop processing? Enter y to stop\n")
+    value = input("Do you want to stop processing? Enter y to stop, n to add new requests\n")
     if value == 'y':
         break
 
