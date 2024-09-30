@@ -9,12 +9,11 @@ def is_palindrome(input_string: str):
     d = deque()
     #remove all spaces
     stripped_string = input_string.strip()
+    lower_string = stripped_string.lower()
 
-    for i in stripped_string:
+    for i in lower_string:
         d.append(i)
-    print(d)
-    print(len(d))
-
+    
     while len(d) > 1:
         if d.pop() == d.popleft():
             print("Elements are equal")
