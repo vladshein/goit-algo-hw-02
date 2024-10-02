@@ -1,6 +1,7 @@
 #Homework2 task1
 from queue import Queue
 import random
+import time
 
 #Створити чергу заявок
 queue = Queue()
@@ -10,10 +11,13 @@ queue = Queue()
 #     Додати заявку до черги
 
 def generate_request(queue: Queue):
-    requests_count = random.randint(1,5)
-    for i in range(requests_count):
-        queue.put(i)
-        print(f"New member added to queue")
+    #генерація рандомного id
+    request_id = random.randint(1000, 9999)
+    request_data = f"Request {request_id}"
+    
+    #додавання до черги
+    queue.put(request_data)
+    print(f"Generated: {request_data}")
 # Функція process_request():
 #     Якщо черга не пуста:
 #         Видалити заявку з черги
@@ -25,9 +29,8 @@ def process_requests(queue: Queue):
     if queue.empty():
         print("Queue is empty")
     else:
-        while not queue.empty():
-            number = queue.get()
-            print(f"Process qequest from queue is {number}")
+        request_data = queue.get()
+        print(f"Processing: {request_data}")
 
 # Головний цикл програми:
 #     Поки користувач не вийде з програми:
@@ -36,8 +39,9 @@ def process_requests(queue: Queue):
 
 while(True):
     generate_request(queue)
-    # print(queue)
+    time.sleep(1)
     process_requests(queue)
+    time.sleep(1)
     value = input("Do you want to stop processing? Enter y to stop, n to add new requests\n")
     if value == 'y':
         break
